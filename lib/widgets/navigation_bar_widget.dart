@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:web_example/widgets/nav_bar_button.dart';
 import 'package:web_example/widgets/responsive_widget.dart';
 
+import 'Icon_button.dart';
+
 class NavBar extends ResponsiveWidget {
   const NavBar({Key? key}) : super(key: key);
 
   @override
   Widget buildDesktop(BuildContext context) {
-    return DesktopNavBar();
+    return const DesktopNavBar();
   }
 
   @override
   Widget buildMobile(BuildContext context) {
-    return MobileNavBar();
+    return const MobileNavBar();
   }
 }
 
@@ -33,15 +35,16 @@ class DesktopNavBar extends StatelessWidget {
             const Text(
               'Karate',
               style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.black87),
+                fontSize: 32,
+                fontWeight: FontWeight.w700,
+              ),
             ),
             Expanded(child: Container()),
             NavbarButton(onTap: () {}, text: 'Home'),
             NavbarButton(onTap: () {}, text: 'Features'),
             NavbarButton(onTap: () {}, text: 'Screenshots'),
             NavbarButton(onTap: () {}, text: 'Contact'),
+            const IconButtonTheme()
           ],
         ),
       ),

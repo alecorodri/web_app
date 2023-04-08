@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../providers/color_provider.dart';
+import '../providers/theme_provider.dart';
 
 class NavbarButton extends ConsumerWidget {
   final VoidCallback onTap;
@@ -13,6 +14,7 @@ class NavbarButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final color = ref.watch(textColor);
+    final isDarkMode = ref.watch(isDarkModeProvider);
     return MouseRegion(
       onEnter: (value) {
         //ref.read(textColor.notifier).state = Colors.blue;
@@ -20,7 +22,9 @@ class NavbarButton extends ConsumerWidget {
       },
       onExit: (value) {
         //ref.read(textColor.notifier).state = Colors.black;
-        ref.read(textColor.notifier).update((state) => Colors.black);
+        ref
+            .read(textColor.notifier)
+            .update((state) => isDarkMode ? Colors.white : Colors.black);
       },
       child: Material(
         color: Colors.transparent,
